@@ -26,41 +26,97 @@
     <div class="conatiner">
       <!-- HEADER -->
       <div class="header">
-        <div class="shipping">
-          <p class="shippingOffer">FREE SHIPPING ON ALL US ORDERS OVER $100</p>
-        </div>
+        <!-- <div class="shipping" >
+          <p class="shippingOffer">FREE SHIPPING ON ALL ORDERS OVER KSH 8000</p>
+        </div> -->
 
         <div class="nav">
-          <div class="navLinks">
-            <ul class="links">
-              <li class="home">Home</li>
-              <li class="category" id="category">
-                Category
-                <ul class="categoryList">
-                  <li class="men">Men's Clothing</li>
-                  <li class="women">Women's Clothing</li>
-                  <li class="electronics">Electronics</li>
-                  <li class="jewellery">Jewellery</li>
-                </ul>
-              </li>
-
-              <li class="home">About</li>
-            </ul>
-          </div>
           <div class="logo">
             <p class="logoText">JITU MALL</p>
           </div>
+
+          <div class="navLinks">
+            <ul class="links">
+              <li class="home">
+                <button class="topProducts" id="categoryBtn">Top Products</button>
+              </li>
+              <li class="men">
+                <button class="menBtn" id="categoryBtn">Men's Clothing</button>
+              </li>
+              <li class="women">
+                <button class="womenBtn" id="categoryBtn">Women's Clothing</button>
+              </li>
+              <li class="electronics">
+                <button class="electronicsBtn" id="categoryBtn">Electronics</button>
+              </li>
+              <li class="jewellery">
+                <button class="jewelleryBtn" id="categoryBtn">Jewellery</button>
+              </li>
+            </ul>
+          </div>
+
           <div class="icons">
+            <button class="addProductBtn">Add Product</button>
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <i class="fa fa-search" aria-hidden="true"></i>
             <i class="fa fa-menu" aria-hidden="true"></i>
           </div>
         </div>
       </div>
 
-      <div class="product">
+      <!-- ALL PRODUCTS -->
+      <div class="product"></div>
 
+      <!-- PRODUCT CATEGORIES -->
+
+      <div class="jewelleryDiv"></div>
+      <div class="electronicsDiv"></div>
+      <div class="womenDiv"></div>
+      <div class="menDiv"></div>
+
+
+    <!-- ADD PRODUCT FORM -->
+    <div class="formProduct">
+      <form action="" method="post" class="form">
+        <label for="title" class="label">Title </label>
+        <input type="text" name="title" id="title" required>
+
+        <label for="description" class="label">Description</label>
+        <input type="text" name="description" id="description" required>
+
+        <label for="image">Image</label>
+        <input type="file" name="Image" id="image" accept="image/*" required>
+
+        <label for="price" class="label">Price</label>
+        <input type="number" name="price" id="price" min="1" step="any" required>
+
+        <label for="selectCategory" class="label">Category</label>
+        <select name="category" id="selectCategory" required>
+          <option value="electronic">Electronics</option>
+          <option value="men'sClothing">Men's Clothing</option>
+          <option value="women'sclothing">Women's Clothing</option>
+          <option value="jewelery">Jewellery</option>
+        </select>
+
+        <button type="submit" class="submitProductBtn">Add</button>
+      </form>
+    </div>
+
+    <!-- CART -->
+    <div class="cart">
+      <div class="prod">
+        <div class="prodImg">
+          <img src="" alt="" srcset="">
+          <p>Title</p>
+          <p>Description</p>
+          <p>Pice</p>
+        </div>
+
+        <div class="quantity">
+
+        </div>
       </div>
+    </div>
+
       <!-- FOOTER -->
 
       <div class="footer">

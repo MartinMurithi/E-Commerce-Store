@@ -1,4 +1,9 @@
-    DISPLAYING ADDITIONAL DATA ON HOVER
-The adjacent sibling selector (+) selects all elements that are the adjacent siblings of a specified element.
 
-The word "adjacent" means "immediately following", and the example above selects all elements with class=".hide", that are placed immediately after elements with class=".myDIV", on hover.
+
+=> Scroll event
+
+=>  FETCH API
+    
+A data URL is a URI (Uniform Resource Identifier) scheme that allows you to embed data directly into a web page as a string. A data URL contains the data itself, as well as metadata describing the data type and encoding.
+
+FILE REAADER -> Lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read.
