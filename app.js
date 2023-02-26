@@ -29,10 +29,10 @@ jewelleryBtn.addEventListener("click", jewelleryCategory);
 electronicsBtn.addEventListener("click", electronicsCategory);
 womenBtn.addEventListener("click", womenCategory);
 menBtn.addEventListener("click", menCategory);
-let res;
-  let jsonData;
+
 async function fetchProducts(url) {
-  
+  let res;
+  let jsonData;
   const productsUrl = "https://fakestoreapi.com/products/";
   try {
     res = await fetch(productsUrl);
