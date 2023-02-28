@@ -1,5 +1,7 @@
 window.addEventListener("load", fetchProducts);
 
+let cartArr = [];
+
 const body = document.body;
 const gridImages = document.querySelector(".imageGrid");
 const product = document.querySelector(".product");
@@ -10,6 +12,9 @@ const electronicsBtn = document.querySelector(".electronicsBtn");
 const menBtn = document.querySelector(".menBtn");
 const womenBtn = document.querySelector(".womenBtn");
 const jewelleryBtn = document.querySelector(".jewelleryBtn");
+
+const cartBtn = document.getElementById("cartBtn");
+const cartDiv = document.querySelector(".cartDiv");
 
 const menDiv = document.querySelector(".menDiv");
 const womenDiv = document.querySelector(".menDiv");
@@ -40,16 +45,18 @@ async function fetchProducts(url) {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
           <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
           <p class="productName">${data.title}</p>
-          <p class="productPrice">KSH ${data.price}</p>
+          <p class="productPrice">$ ${data.price}</p>
                     
           <div class="addViewBtns">
             <button class="viewProductBtn">View Product</button>
-            <button class="addCartBtn">Add To Cart</button>
+            <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
           </div>
         </div>
             `;
@@ -57,6 +64,20 @@ async function fetchProducts(url) {
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function jewelleryCategory() {
@@ -70,17 +91,37 @@ async function jewelleryCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   <div class="item">
                     <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
                     <p class="productName">${data.title}</p>
-                    <p class="productPrice">KSH ${data.price}</p>
+                    <p class="productPrice">$ ${data.price}</p>
+
+                    <div class="addViewBtns">
+                      <button class="viewProductBtn">View Product</button>
+                      <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+                    </div>
                 </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function menCategory() {
@@ -94,18 +135,39 @@ async function menCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
             <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
             <p class="productName">${data.title}</p>
-            <p class="productPrice">KSH ${data.price}</p>
+            <p class="productPrice">$ ${data.price}</p>
+
+            <div class="addViewBtns">
+              <button class="viewProductBtn">View Product</button>
+              <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+            </div>
         </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function womenCategory() {
@@ -119,18 +181,39 @@ async function womenCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
             <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
             <p class="productName">${data.title}</p>
-            <p class="productPrice">KSH ${data.price}</p>
+            <p class="productPrice">$ ${data.price}</p>
+
+            <div class="addViewBtns">
+            <button class="viewProductBtn">View Product</button>
+            <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+          </div>
         </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function electronicsCategory() {
@@ -143,18 +226,39 @@ async function electronicsCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
             <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
             <p class="productName">${data.title}</p>
-            <p class="productPrice">KSH ${data.price}</p>
+            <p class="productPrice">$ ${data.price}</p>
+
+            <div class="addViewBtns">
+            <button class="viewProductBtn">View Product</button>
+            <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+          </div>
         </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 function toggleNavbarOnScroll() {
@@ -211,12 +315,12 @@ let imgData;
 img.addEventListener("change", (e) => {
   let reader = new FileReader();
   reader.readAsDataURL(img.files[0]);
-  //console.log(img.files[0]);
+  console.log(img.files[0]);
 
   reader.onload = () => {
     //onLoad Event is fired when a file's content has been read sucessfully
     imgData = reader.result;
-    //console.log(imgData);
+    console.log(imgData);
   };
 });
 
@@ -249,3 +353,37 @@ form.addEventListener("submit", (event) => {
     .then((json) => console.log(objData));
   console.log(jsonData);
 });
+
+cartBtn.addEventListener("click", (event) => {
+
+  product.innerHTML = "";
+  formDiv.style.display = 'none'
+  cartDiv.style.display = "block";
+  cartDiv.style.margin = "auto";
+
+  cartArr.forEach(cartItem => {
+    cartDiv.innerHTML += `
+      <div id="product">
+        <img src=${cartItem.image} alt="" srcset="">
+        <p class="cTitle">${cartItem.title}</p>
+        <p class="cPrice">${cartItem.price}</p>
+        <button class="removeItem" data-id=${cartItem.id}>Remove</button>
+
+      </div>
+
+      <div class="total">
+        <p class="totalPrice"></p>
+      </div>
+    `
+  })
+});
+
+
+let delBtns = document.querySelectorAll(".removeItem");
+delBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+  let id = btn.getAttribute("data-id");
+    console.log(id);
+    console.log('deleted');
+})
+})

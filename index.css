@@ -21,7 +21,7 @@ body::-webkit-scrollbar{
 
 .nav {
   position: fixed;
-  top: 0;
+  top: 0px;
   display: flex;
   background-image: url(./Images/Bcg\ Sample\ 1.avif);
   align-items: center;
@@ -216,6 +216,12 @@ select{
   cursor: pointer;
 }
 
+.cartDiv{
+  width: 500px;
+  height: 500px;
+  background-color: red;
+  display: none;
+}
 
 .footer {
   display: grid;
