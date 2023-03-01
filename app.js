@@ -34,15 +34,19 @@ jewelleryBtn.addEventListener("click", jewelleryCategory);
 electronicsBtn.addEventListener("click", electronicsCategory);
 womenBtn.addEventListener("click", womenCategory);
 menBtn.addEventListener("click", menCategory);
+let res;
+let jsonData;
+let allData; 
 
 async function fetchProducts(url) {
-  let res;
-  let jsonData;
   const productsUrl = "https://fakestoreapi.com/products/";
+
   try {
     res = await fetch(productsUrl);
     jsonData = await res.json();
-    console.log(jsonData);
+    allData = localStorage.setItem("data", JSON.stringify(jsonData));
+    // let x = localStorage.getItem(JSON.parse("data"));
+    // console.log(x);
 
     product.innerHTML = "";
     cartDiv.style.display = "none";
@@ -55,8 +59,7 @@ async function fetchProducts(url) {
           <p class="productPrice">$ ${data.price}</p>
                     
           <div class="addViewBtns">
-            <button class="viewProductBtn">View Product</button>
-            <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+                       <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
           </div>
         </div>
             `;
@@ -100,7 +103,6 @@ async function jewelleryCategory() {
                     <p class="productPrice">$ ${data.price}</p>
 
                     <div class="addViewBtns">
-                      <button class="viewProductBtn">View Product</button>
                       <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
                     </div>
                 </div>
@@ -145,7 +147,6 @@ async function menCategory() {
             <p class="productPrice">$ ${data.price}</p>
 
             <div class="addViewBtns">
-              <button class="viewProductBtn">View Product</button>
               <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
             </div>
         </div>
@@ -191,7 +192,6 @@ async function womenCategory() {
             <p class="productPrice">$ ${data.price}</p>
 
             <div class="addViewBtns">
-            <button class="viewProductBtn">View Product</button>
             <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
           </div>
         </div>
@@ -236,7 +236,6 @@ async function electronicsCategory() {
             <p class="productPrice">$ ${data.price}</p>
 
             <div class="addViewBtns">
-            <button class="viewProductBtn">View Product</button>
             <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
           </div>
         </div>
@@ -324,10 +323,41 @@ img.addEventListener("change", (e) => {
   };
 });
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  // const formData = new FormData(form);
-  // console.log(formData.get('imgData'));
+// form.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   // const formData = new FormData(form);
+//   // console.log(formData.get('imgData'));
+//   const title = document.getElementById("title").value;
+//   const description = document.getElementById("description").value;
+//   const price = document.getElementById("price").value;
+//   const category = document.getElementById("selectCategory").value;
+
+//   //console.log(title, description, price, category, imgData);
+
+//   const objData = {
+//     title: title,
+//     desc: description,
+//     price: price,
+//     category: category,
+//     image: imgData,
+//   };
+
+//   // console.log(objData);
+
+//   // fetch("https://fakestoreapi.com/products", {
+//   //   method: "POST",
+//   //   body: JSON.stringify(objData),
+//   // })
+//   //   .then((res) => res.json())
+//   //   .then((json) => console.log(objData));
+//   // console.log(jsonData);
+
+  
+// });
+
+function addProductToAPI(form) {
+
+  // Extract the form data
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
   const price = document.getElementById("price").value;
@@ -335,55 +365,91 @@ form.addEventListener("submit", (event) => {
 
   //console.log(title, description, price, category, imgData);
 
-  const objData = {
+  const productData = {
     title: title,
     desc: description,
     price: price,
     category: category,
     image: imgData,
-  };
+  }
 
-  console.log(objData);
+  // Send a POST request to the API to add the new product
+  fetch('https://fakestoreapi.com/products', {
+    method: 'POST',
+    body: JSON.stringify(productData),
+    headers: {
+      'Content-Type': 'application/json'
+    }
 
-  fetch("https://fakestoreapi.com/products", {
-    method: "POST",
-    body: JSON.stringify(objData),
   })
-    .then((res) => res.json())
-    .then((json) => console.log(objData));
-  console.log(jsonData);
-});
+    
+    
+  .then(response => response.json())
+  .then(data => {
+    //fetching the updated list of products from the API
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(products => {
+        // Display the updated list of products on the page
+        //const productList = document.querySelector('#product-list');
+        console.log(json);
+
+        products.forEach(product => {
+          //const productElement = document.createElement('div');
+          product.innerHTML = `
+            <h2>${product.name}</h2>
+            <p>${product.description}</p>
+            <p>Price: ${product.price}</p>
+          `;
+         // productList.appendChild(productElement);
+        });
+      });
+  })
+  .catch(error => {
+    console.error('Error adding product:', error);
+  });
+}
+
+submitProductBtn.addEventListener('click', addProductToAPI)
 
 cartBtn.addEventListener("click", (event) => {
-
   product.innerHTML = "";
-  formDiv.style.display = 'none'
+  formDiv.style.display = "none";
   cartDiv.style.display = "block";
   cartDiv.style.margin = "auto";
 
-  cartArr.forEach(cartItem => {
+  let items = JSON.parse(localStorage.getItem("data"));
+  items.push('yeeeeey');
+  allData = localStorage.setItem("data", JSON.stringify(items));
+
+
+  // console.log(`YOOOOOH ${ items }`);
+
+  cartArr.forEach((cartItem) => {
     cartDiv.innerHTML += `
       <div id="product">
         <img src=${cartItem.image} alt="" srcset="">
         <p class="cTitle">${cartItem.title}</p>
         <p class="cPrice">${cartItem.price}</p>
-        <button class="removeItem" data-id=${cartItem.id}>Remove</button>
+        <button class="removeItemBtn" data-id=${cartItem.id}>Remove</button>
 
       </div>
 
       <div class="total">
         <p class="totalPrice"></p>
       </div>
-    `
+    `;
+  });
+  let delBtns = document.querySelectorAll(".removeItemBtn");
+  //let cart = document.querySelectorAll(".addCartBtn");
+  delBtns.forEach(element => {
+    element.addEventListener("click", (e) => {
+      console.log(456);
+      e.target.parentElement.remove();
+      console.log(jsonData);
+      
+    })
   })
 });
 
 
-let delBtns = document.querySelectorAll(".removeItem");
-delBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-  let id = btn.getAttribute("data-id");
-    console.log(id);
-    console.log('deleted');
-})
-})
