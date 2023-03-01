@@ -15,12 +15,12 @@ body::-webkit-scrollbar{
 }
 
 .container{
-  width: 80%;
+  width: 100%;
 }
 
 .nav {
   position: fixed;
-  top: 0;
+  top: 0px;
   display: flex;
   background-image: url(./Images/Bcg\ Sample\ 1.avif);
   align-items: center;
@@ -49,7 +49,7 @@ body::-webkit-scrollbar{
 }
 
 #categoryBtn:hover{
-  background-color: #e6e6e6;
+  color: rgb(59, 59, 242);
 }
 
 .navLinks ul {
@@ -86,7 +86,7 @@ body::-webkit-scrollbar{
 }
 
 .addProductBtn:hover{
-  background-color: #e6e6e6;
+  color: rgb(59, 59, 242);
 }
 
 
@@ -214,7 +214,43 @@ select{
   font-size: .9rem;
   cursor: pointer;
 }
+.cartItems{
+  width: 100%;
+  padding: 20px;
+  background-color: plum;
+}
 
+.cartDiv{
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  background-color: rgb(82, 42, 82);
+  width: 65%;
+}
+/* .cartDiv , .img{
+  width: 200px;
+  height: 280px;
+  display: block;
+  margin: auto;
+  border-radius: 20px;
+} */
+.cartDiv, .product{
+  border-radius: 20px;
+  padding: 15px;
+  margin: 20px;
+  color: whitesmoke;
+}
+.removeItemBtn{
+  background-color: rgb(216, 75, 216);
+  border-style: none;
+  border-radius: 5px;
+  width: 100px;
+}
+.removeItemBtn:hover{
+  cursor: pointer;
+  opacity: 0.5;
+  color: whitesmoke;
+}
 
 .footer {
   display: grid;

@@ -1,5 +1,7 @@
 window.addEventListener("load", fetchProducts);
 
+let cartArr = [];
+
 const body = document.body;
 const gridImages = document.querySelector(".imageGrid");
 const product = document.querySelector(".product");
@@ -10,6 +12,9 @@ const electronicsBtn = document.querySelector(".electronicsBtn");
 const menBtn = document.querySelector(".menBtn");
 const womenBtn = document.querySelector(".womenBtn");
 const jewelleryBtn = document.querySelector(".jewelleryBtn");
+
+const cartBtn = document.getElementById("cartBtn");
+const cartDiv = document.querySelector(".cartDiv");
 
 const menDiv = document.querySelector(".menDiv");
 const womenDiv = document.querySelector(".menDiv");
@@ -29,10 +34,10 @@ jewelleryBtn.addEventListener("click", jewelleryCategory);
 electronicsBtn.addEventListener("click", electronicsCategory);
 womenBtn.addEventListener("click", womenCategory);
 menBtn.addEventListener("click", menCategory);
-
-async function fetchProducts(url) {
   let res;
   let jsonData;
+async function fetchProducts(url) {
+
   const productsUrl = "https://fakestoreapi.com/products/";
   try {
     res = await fetch(productsUrl);
@@ -40,16 +45,18 @@ async function fetchProducts(url) {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
           <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
           <p class="productName">${data.title}</p>
-          <p class="productPrice">KSH ${data.price}</p>
+          <p class="productPrice">$ ${data.price}</p>
                     
           <div class="addViewBtns">
             <button class="viewProductBtn">View Product</button>
-            <button class="addCartBtn">Add To Cart</button>
+            <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
           </div>
         </div>
             `;
@@ -57,6 +64,20 @@ async function fetchProducts(url) {
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function jewelleryCategory() {
@@ -70,17 +91,36 @@ async function jewelleryCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   <div class="item">
                     <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
                     <p class="productName">${data.title}</p>
-                    <p class="productPrice">KSH ${data.price}</p>
+                    <p class="productPrice">$ ${data.price}</p>
+                    <div class="addViewBtns">
+                      <button class="viewProductBtn">View Product</button>
+                      <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+                    </div>
                 </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function menCategory() {
@@ -94,18 +134,38 @@ async function menCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
             <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
             <p class="productName">${data.title}</p>
-            <p class="productPrice">KSH ${data.price}</p>
+            <p class="productPrice">$ ${data.price}</p>
+            <div class="addViewBtns">
+              <button class="viewProductBtn">View Product</button>
+              <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+            </div>
         </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function womenCategory() {
@@ -119,18 +179,38 @@ async function womenCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
             <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
             <p class="productName">${data.title}</p>
-            <p class="productPrice">KSH ${data.price}</p>
+            <p class="productPrice">$ ${data.price}</p>
+            <div class="addViewBtns">
+            <button class="viewProductBtn">View Product</button>
+            <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+          </div>
         </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 async function electronicsCategory() {
@@ -143,18 +223,38 @@ async function electronicsCategory() {
     console.log(jsonData);
 
     product.innerHTML = "";
+    cartDiv.style.display = "none";
+    formDiv.style.display = "none";
     jsonData.forEach((data) => {
       product.innerHTML += `   
         <div class="item">
             <img class="imgProduct" src="${data.image}" alt="Image of a product" srcset="">
             <p class="productName">${data.title}</p>
-            <p class="productPrice">KSH ${data.price}</p>
+            <p class="productPrice">$ ${data.price}</p>
+            <div class="addViewBtns">
+            <button class="viewProductBtn">View Product</button>
+            <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+          </div>
         </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+
+  let cart = document.querySelectorAll(".addCartBtn");
+  cart.forEach((element) => {
+    element.addEventListener("click", () => {
+      let cartId = element.getAttribute("data-id");
+      console.log(cartId);
+      jsonData.forEach((element) => {
+        if (cartId == element.id) {
+          cartArr.push(element);
+          console.log(cartArr);
+        }
+      });
+    });
+  });
 }
 
 function toggleNavbarOnScroll() {
@@ -184,37 +284,39 @@ addProductBtn.addEventListener("click", () => {
   formDiv.style.width = "30%";
 });
 
-//function to display all cart items
+//fetch image from input
 
-const cartBtn = document.getElementById("cartBtn");
-cartBtn.addEventListener('click', displayCartItems)
+// submitProductBtn.addEventListener("click", () => {
+//
 
-function displayCartItems(){
-  const cartDiv = document.querySelector(".cart");
-  cartDiv.innerHTML= `
-     <img src="" alt="" srcset="">
-     <p>Title</p>
-     <p>Description</p>
-     <p>Price</p>
-  `;
+//   //console.log(title, description, price, category, imgData);
 
-
-
-  // console.log(clickedcart);
-  
-}
-
+//   fetch('https://fakestoreapi.com/products',{
+//             method:"POST",
+//             body:JSON.stringify(
+//                 {
+//                     title: title,
+//                     price: price,
+//                     description: description,
+//                     image: imgData,
+//                     category: category
+//                 }
+//             )
+//         })
+//             .then(res=>res.json())
+//             .then(json=>console.log(json))
+// });
 const img = document.getElementById("image");
 let imgData;
 img.addEventListener("change", (e) => {
   let reader = new FileReader();
   reader.readAsDataURL(img.files[0]);
-  //console.log(img.files[0]);
+  console.log(img.files[0]);
 
   reader.onload = () => {
     //onLoad Event is fired when a file's content has been read sucessfully
     imgData = reader.result;
-    //console.log(imgData);
+    console.log(imgData);
   };
 });
 
@@ -247,3 +349,43 @@ form.addEventListener("submit", (event) => {
     .then((json) => console.log(objData));
   console.log(jsonData);
 });
+
+cartBtn.addEventListener("click", (event) => {
+
+  product.innerHTML = "";
+  formDiv.style.display = 'none'
+  cartDiv.style.display = "block";
+  cartDiv.style.margin = "auto";
+
+  cartArr.forEach(cartItem => {
+    cartDiv.innerHTML += `
+      <div id="product">
+        <img src=${cartItem.image} alt="" srcset="">
+        <p class="cTitle">${cartItem.title}</p>
+        <p class="cPrice">${cartItem.price}</p>
+        <button class="removeItemBtn" data-id=${cartItem.id}>Remove Item</button>
+      </div>
+      <div class="total">
+        <p class="totalPrice"></p>
+      </div>
+    `
+  })
+});
+
+
+let delBtns = document.querySelectorAll(".removeItemBtn");
+//let cart = document.querySelectorAll(".addCartBtn");
+delBtns.forEach(element=>{
+  element.addEventListener("click", () => {
+      let id = element.getAttribute("data-id");
+      console.log(id);
+})
+
+    cartDiv.forEach((element, index) => {
+      if (id == element.id) {
+        cartArr.splice(index, 1);
+        console.log(cartArr);
+      }
+    });
+    console.log('jjjjjjj');
+    // console.log('deleted');
