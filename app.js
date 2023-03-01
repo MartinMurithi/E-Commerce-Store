@@ -389,3 +389,7 @@ delBtns.forEach(element=>{
     });
     console.log('jjjjjjj');
     // console.log('deleted');
+  });
+
+
+
