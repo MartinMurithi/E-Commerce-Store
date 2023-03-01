@@ -1,3 +1,4 @@
+
 * {
   padding: 0;
   margin: 0;
@@ -6,7 +7,7 @@
 
 body {
   width: 100%;
-  height: auto;
+  height: 0;
   font-family: sans-serif;
 }
 
@@ -15,7 +16,9 @@ body::-webkit-scrollbar{
 }
 
 .container{
-  width: 100%;
+
+  width: 80%;
+
 }
 
 .nav {
@@ -49,7 +52,9 @@ body::-webkit-scrollbar{
 }
 
 #categoryBtn:hover{
-  color: rgb(59, 59, 242);
+
+  background-color: #e6e6e6;
+
 }
 
 .navLinks ul {
@@ -86,12 +91,15 @@ body::-webkit-scrollbar{
 }
 
 .addProductBtn:hover{
-  color: rgb(59, 59, 242);
+
+  background-color: #e6e6e6;
+
 }
 
 
 .product, .menDiv  {
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   justify-items: center;
@@ -214,42 +222,32 @@ select{
   font-size: .9rem;
   cursor: pointer;
 }
-.cartItems{
-  width: 100%;
-  padding: 20px;
-  background-color: plum;
+
+.parentCart{
+  width: 80%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .cartDiv{
-  display: flex;
-  flex-direction: column;
-  margin: 30px;
-  background-color: rgb(82, 42, 82);
-  width: 65%;
+  display: inline;
+  display: none;
+  height: auto;
 }
-/* .cartDiv , .img{
-  width: 200px;
-  height: 280px;
-  display: block;
-  margin: auto;
-  border-radius: 20px;
-} */
-.cartDiv, .product{
-  border-radius: 20px;
-  padding: 15px;
-  margin: 20px;
-  color: whitesmoke;
-}
+
 .removeItemBtn{
-  background-color: rgb(216, 75, 216);
+  padding: 5px;
+  margin: 8px;
   border-style: none;
-  border-radius: 5px;
-  width: 100px;
-}
-.removeItemBtn:hover{
+  cursor: pointer;
+  background-color: black;
+  
+  .removeItemBtn:hover{
   cursor: pointer;
   opacity: 0.5;
   color: whitesmoke;
+
 }
 
 .footer {
@@ -319,5 +317,11 @@ body::-webkit-scrollbar {
     justify-items: center;
     grid-template-columns: 50% 50%;
     width: 100%;
+  }
+
+
+  .footer{
+    display: grid;
+    grid-template-columns: 2;
   }
 }
