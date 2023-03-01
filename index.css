@@ -16,7 +16,9 @@ body::-webkit-scrollbar{
 }
 
 .container{
+
   width: 80%;
+
 }
 
 .nav {
@@ -50,7 +52,9 @@ body::-webkit-scrollbar{
 }
 
 #categoryBtn:hover{
+
   background-color: #e6e6e6;
+
 }
 
 .navLinks ul {
@@ -87,7 +91,9 @@ body::-webkit-scrollbar{
 }
 
 .addProductBtn:hover{
+
   background-color: #e6e6e6;
+
 }
 
 
@@ -216,6 +222,7 @@ select{
   font-size: .9rem;
   cursor: pointer;
 }
+
 .parentCart{
   width: 80%;
   height: auto;
@@ -235,6 +242,12 @@ select{
   border-style: none;
   cursor: pointer;
   background-color: black;
+  
+  .removeItemBtn:hover{
+  cursor: pointer;
+  opacity: 0.5;
+  color: whitesmoke;
+
 }
 
 .footer {
@@ -305,6 +318,7 @@ body::-webkit-scrollbar {
     grid-template-columns: 50% 50%;
     width: 100%;
   }
+
 
   .footer{
     display: grid;

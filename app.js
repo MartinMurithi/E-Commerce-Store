@@ -34,6 +34,7 @@ jewelleryBtn.addEventListener("click", jewelleryCategory);
 electronicsBtn.addEventListener("click", electronicsCategory);
 womenBtn.addEventListener("click", womenCategory);
 menBtn.addEventListener("click", menCategory);
+
 let res;
 let jsonData;
 let allData; 
@@ -48,6 +49,7 @@ async function fetchProducts(url) {
     // let x = localStorage.getItem(JSON.parse("data"));
     // console.log(x);
 
+
     product.innerHTML = "";
     cartDiv.style.display = "none";
     formDiv.style.display = "none";
@@ -59,7 +61,9 @@ async function fetchProducts(url) {
           <p class="productPrice">$ ${data.price}</p>
                     
           <div class="addViewBtns">
+
                        <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
+
           </div>
         </div>
             `;
@@ -67,6 +71,7 @@ async function fetchProducts(url) {
   } catch (error) {
     console.log(error);
   }
+
 
   let cart = document.querySelectorAll(".addCartBtn");
   cart.forEach((element) => {
@@ -82,6 +87,7 @@ async function fetchProducts(url) {
     });
   });
 }
+
 
 async function jewelleryCategory() {
   let res;
@@ -102,7 +108,9 @@ async function jewelleryCategory() {
                     <p class="productName">${data.title}</p>
                     <p class="productPrice">$ ${data.price}</p>
 
+
                     <div class="addViewBtns">
+
                       <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
                     </div>
                 </div>
@@ -146,15 +154,18 @@ async function menCategory() {
             <p class="productName">${data.title}</p>
             <p class="productPrice">$ ${data.price}</p>
 
+
             <div class="addViewBtns">
               <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
             </div>
+
         </div>
             `;
     });
   } catch (error) {
     console.log(error);
   }
+
 
   let cart = document.querySelectorAll(".addCartBtn");
   cart.forEach((element) => {
@@ -181,6 +192,7 @@ async function womenCategory() {
     jsonData = await res.json();
     console.log(jsonData);
 
+
     product.innerHTML = "";
     cartDiv.style.display = "none";
     formDiv.style.display = "none";
@@ -191,7 +203,9 @@ async function womenCategory() {
             <p class="productName">${data.title}</p>
             <p class="productPrice">$ ${data.price}</p>
 
+
             <div class="addViewBtns">
+
             <button class="addCartBtn" data-id= ${data.id}>Add To Cart</button>
           </div>
         </div>
@@ -214,6 +228,7 @@ async function womenCategory() {
       });
     });
   });
+
 }
 
 async function electronicsCategory() {
@@ -426,11 +441,13 @@ cartBtn.addEventListener("click", (event) => {
   // console.log(`YOOOOOH ${ items }`);
 
   cartArr.forEach((cartItem) => {
+
     cartDiv.innerHTML += `
       <div id="product">
         <img src=${cartItem.image} alt="" srcset="">
         <p class="cTitle">${cartItem.title}</p>
         <p class="cPrice">${cartItem.price}</p>
+
         <button class="removeItemBtn" data-id=${cartItem.id}>Remove</button>
 
       </div>
@@ -449,7 +466,23 @@ cartBtn.addEventListener("click", (event) => {
       console.log(jsonData);
       
     })
+
   })
 });
+
+
+
+
+    cartDiv.forEach((element, index) => {
+      if (id == element.id) {
+        cartArr.splice(index, 1);
+        console.log(cartArr);
+      }
+    });
+    console.log('jjjjjjj');
+    // console.log('deleted');
+  });
+
+
 
 
